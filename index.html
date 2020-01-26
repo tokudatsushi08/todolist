@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="top.css">
+    <title>Todoリスト</title>
+</head>
+
+<body>
+    <h1>Todoリスト</h1>
+    <!-- radioで同じnameだと一つしか選択ができない -->
+    <div class="display">
+        <input type="radio" name="status" value="all" onclick="pushstatus();">すべて
+        <input type="radio" name="status" value="work" onclick="pushstatus();">作業中
+        <input type="radio" name="status" value="complete" onclick="pushstatus();">完了
+        <div class="display_2">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>コメント</th>
+                        <th>状態</th>
+                    </tr>
+                </thead>
+                <tbody id="output"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form">
+        <h2>新規タスクの追加</h2>
+        <form>
+            <input type="text" id="content" name="text_content">
+            <input type="button" value="送信" onclick="addStringToTextare()">
+        </form>
+    </div>
+    <script src="top2.js"></script>
+</body>
+
+</html>
