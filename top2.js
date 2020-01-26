@@ -113,7 +113,7 @@
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
 
                 const topDoneTarget = topDone[topDoneNumber].parentNode;
-                topDoneTarget.style.display = "";
+                topDoneTarget.style.display = "none";
                 console.log(topDoneTarget);
             }
             for (topDoingNumber = 0; topDoingNumber < topDoing.length; topDoingNumber++) {
