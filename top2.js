@@ -119,7 +119,7 @@
             for (topDoingNumber = 0; topDoingNumber < topDoing.length; topDoingNumber++) {
 
                 const topDoingTarget = topDoing[topDoingNumber].parentNode;
-                topDoingTarget.style.display = "none";
+                topDoingTarget.style.display = "";
 
                 console.log(todos);
             }
