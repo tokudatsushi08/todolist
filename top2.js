@@ -11,53 +11,38 @@
         const taskTag = document.createElement('td');
         const outputElem = document.getElementById("output");
 
+        // 作業中ボタンを作成する定数
+        const workingBtn = document.createElement('button');
+        workingBtn.textContent = "作業中";
+        workingBtn.classList.add('doing');
 
-        function createWorkingBtn() {
-            let working = document.createElement('button');
-            working.textContent = "作業中";
-            working.classList.add('doing');
+        // 作業中ボタンに動作を加える
+        workingBtn.addEventListener('click', function () {
+            if (workingBtn.textContent === "作業中") {
+                workingBtn.textContent = "完了";
+                workingBtn.classList.add('done');
+                workingBtn.classList.remove('doing');
+            } else {
+                workingBtn.textContent = "作業中";
+                workingBtn.classList.remove('done');
+                workingBtn.classList.add('doing');
+            }
+        });
 
-            working.addEventListener('click', function () {
-                if (working.textContent === "作業中") {
-                    working.textContent = "完了";
-                    working.classList.remove('doing');
-                    working.classList.add('done');
+        // 削除ボタンを作成する定数
+        const deleatBtn = document.createElement('button');
+        deleatBtn.textContent = "削除";
 
-                } else {
-                    working.textContent = "作業中";
-                    working.classList.remove('done');
-                    working.classList.add('doing');
-                }
-            });
-            return working;
-        };
-
-        const workingBtn = createWorkingBtn();
-
-        function createDeleatBtn() {
-
-            let deleat = document.createElement('button');
-            deleat.textContent = "削除";
-
-            deleat.addEventListener('click', function () {
-                idTag.innerHTML = "";
-                taskTag.innerHTML = "";
-                trTag.removeChild(workingBtn);
-                this.remove(deleat);
-                // buttonTag.innerHTML = "";
-            });
-
-            return deleat;
-        };
-        const deleatBtn = createDeleatBtn();
-
-        trTag.appendChild(idTag);
-        trTag.appendChild(taskTag);
-        trTag.appendChild(workingBtn);
-        trTag.appendChild(deleatBtn);
-        outputElem.appendChild(trTag);
+        // 削除ボタンに動作を加える
+        deleatBtn.addEventListener('click', function () {
+            idTag.innerHTML = "";
+            taskTag.innerHTML = "";
+            trTag.removeChild(workingBtn);
+            trTag.removeChild(deleatBtn);
+        });
 
 
+        // オブジェクトを作成する
         const todosObject = {
             id: idNumber,
             commnet: textMessage,
@@ -65,19 +50,30 @@
             secondBtn: deleatBtn
         };
 
+        // オブジェクトの内容を配列に入れる
         todos.push(todosObject);
         idTag.innerHTML = todosObject.id;
         taskTag.innerHTML = todosObject.commnet;
         console.log(todos);
+
+        // 各要素で親子関係を作り、最後にhtmlに表示する
+        trTag.appendChild(idTag);
+        trTag.appendChild(taskTag);
+        trTag.appendChild(workingBtn);
+        trTag.appendChild(deleatBtn);
+        outputElem.appendChild(trTag);
+
     }
 
 
     function pushstatus() {
+
+        // 各ラジオボタンの要素を取得する
         const topDone = document.getElementsByClassName('done');
         const topDoing = document.getElementsByClassName('doing');
         const radioStatus = document.getElementsByName('status');
 
-
+        // 『全て』を選択した場合
         if (radioStatus[0].checked) {
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
 
@@ -119,7 +115,7 @@
             for (topDoingNumber = 0; topDoingNumber < topDoing.length; topDoingNumber++) {
 
                 const topDoingTarget = topDoing[topDoingNumber].parentNode;
-                topDoingTarget.style.display = "";
+                topDoingTarget.style.display = "none";
 
                 console.log(todos);
             }
