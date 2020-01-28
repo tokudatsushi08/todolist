@@ -108,6 +108,12 @@
 
                 console.log(todos);
             }
+            topDoing[topDoingNumber].addEventListener('click', function () {
+                for (topDoingNumber = 0; topDoingNumber < topDoing.length; topDoingNumber++) {
+                    const topDoingTarget = topDoing[topDoingNumber].parentNode;
+                    topDoingTarget.style.display = "none";
+                }
+            })
         }
         if (radioStatus[2].checked) {
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
