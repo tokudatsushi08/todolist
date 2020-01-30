@@ -105,10 +105,11 @@
 
                 const topDoingTarget = topDoing[topDoingNumber].parentNode;
                 topDoingTarget.style.display = "";
+
+                topDoing[topDoingNumber].addEventListener('click', function () {
+                    topDoingTarget.style.display = "none"
+                })
             }
-            topDoing.addEventListener('click', function () {
-                alert('クリックされたよ');
-            })
         }
         if (radioStatus[2].checked) {
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
@@ -116,6 +117,9 @@
                 const topDoneTarget = topDone[topDoneNumber].parentNode;
                 topDoneTarget.style.display = "";
                 console.log(topDoneTarget);
+                topDone[topDoneNumber].addEventListener('click', function () {
+                    topDoneTarget.style.display = "none";
+                })
             }
             for (topDoingNumber = 0; topDoingNumber < topDoing.length; topDoingNumber++) {
 
