@@ -2,6 +2,7 @@
 
 {
     const todos = [];
+    const submitBtn = document.getElementById("submitbtn");
 
     function addStringToTextare() {
         const idNumber = todos.length + 1;
@@ -78,7 +79,7 @@
         const radioStatus = document.getElementsByName('status');
 
 
-        if (radioStatus[0].checked) {
+        if (radioStatus[0].checked === true) {
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
 
                 const topDoneTarget = topDone[topDoneNumber].parentNode;
@@ -94,7 +95,14 @@
             }
 
         }
-        if (radioStatus[1].checked) {
+        if (radioStatus[1].checked === true) {
+
+            submitBtn.addEventListener('click', function () {
+                console.log(topDoing[topDoing.length - 1].parentNode);
+                const submitTarget = topDoing[topDoing.length - 1].parentNode;
+                submitTarget.style.display = "";
+            });
+
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
 
                 const topDoneTarget = topDone[topDoneNumber].parentNode;
@@ -111,7 +119,14 @@
                 })
             }
         }
-        if (radioStatus[2].checked) {
+        if (radioStatus[2].checked === true) {
+
+            submitBtn.addEventListener('click', function () {
+                console.log(topDoing[topDoing.length - 1].parentNode);
+                const submitTarget = topDoing[topDoing.length - 1].parentNode;
+                submitTarget.style.display = "none";
+            });
+
             for (topDoneNumber = 0; topDoneNumber < topDone.length; topDoneNumber++) {
 
                 const topDoneTarget = topDone[topDoneNumber].parentNode;
@@ -126,9 +141,12 @@
                 const topDoingTarget = topDoing[topDoingNumber].parentNode;
                 topDoingTarget.style.display = "none";
 
+
                 console.log(todos);
             }
         }
     }
+
+
 }
 
